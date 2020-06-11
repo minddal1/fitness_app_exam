@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+  <head>
+    <title>Log in</title>
+    <link rel="icon" type="image/x-icon" href="./assets/favicon.ico" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" href="global.css"> 
+    <link rel="stylesheet" type="text/css" href="trainer-package-table.css"> 
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
+  </head>
+
+  <body>
+
+    <div class="container">
+          <div class="topnav">
+              <div class="topnav-centered">
+                <a href="/" class="active">Din Personlig Træner</a>
+              </div> 
+            <a href="/frontpage">Forside</a>
+            <a href="/gyms">Center</a>
+            <a href="/courses">Hold</a>
+            <a href="/instructors">Instruktøre</a> 
+            <a href="/contact">Kunde henvendelser</a>
+              <div class="topnav-right">
+                <a href="/chooseLogin">Profil</a>
+                <a href="/logout">Log ud</a>
+              </div>
+          </div>
+
+          <div class="header-before-container">
+            <br>
+            <br>
+          <h1 id="loggedIn-trainer">Velkommen</h1>
+          </div>
+
+          <div class="container-in-container">
+
+            <div class="column-in-container">
+
+              <h1>Dine klienter</h1>
+              <div class="trainer-customer-table">
+    
+                <div style="float:left;width:300px;height:250px;overflow:scroll-y;padding:10px;">
+                  <div id="conversation"></div>
+                  <input id="data" style="width:200px;" />
+                  <input type="button" id="datasend" value="send" />
+                </div>
+                
+            
+              </div>
+          </div>
+          <div class="column-in-container">
+
+
+          </div>
+  
+
+
+      
+
+          <div class="footer">
+            <div class="footer-centered">
+                <a href="/" class="active">Din Personlig Træner</a>
+          </div>
+          </div>
+
+
+
+
+
+
+
+    </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.5/socket.io.min.js"></script>    
+        <script>
+      const socket = io.connect("localhost:3232");
+
+      //on connection to server, ask for user's name with an anonymous callback
+	socket.on('connect', function(){
+		// call the server-side function 'adduser' and send one parameter (value of prompt)
+		socket.emit('adduser', prompt("What's your name?"));
+	});
+
+	// listener, whenever the server emits 'updatechat', this updates the chat body
+	socket.on('updatechat', function (username, data) {
+		$('#conversation').append('<b>'+username + ':</b> ' + data + '<br>');
+	});
+
+	// listener, whenever the server emits 'updateusers', this updates the username list
+	socket.on('updateusers', function(data) {
+		$('#users').empty();
+		$.each(data, function(key, value) {
+			$('#users').append('<div>' + key + '</div>');
+		});
+	});
+
+	// on load of page
+	$(function(){
+		// when the client clicks SEND
+		$('#datasend').click( function() {
+			var message = $('#data').val();
+			$('#data').val('');
+      // tell server to execute 'sendchat' and send along one parameter
+			socket.emit('sendchat', message);
+		});
+
+		// when the client hits ENTER on their keyboard
+		$('#data').keypress(function(e) {
+			if(e.which == 13) {
+				$(this).blur();
+				$('#datasend').focus().click();
+			}
+		});
+	});
+
+    </script>
+
+
+
+  </body>
+</html>

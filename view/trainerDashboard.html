@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+  <head>
+    <title>Log in</title>
+    <link rel="icon" type="image/x-icon" href="./assets/favicon.ico" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" href="global.css"> 
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
+    <script src="trainer.js"></script>
+  </head>
+
+  <body>
+
+    <div class="container">
+          <div class="topnav">
+              <div class="topnav-centered">
+                <a href="/" class="active">Din Personlig Træner</a>
+              </div> 
+            <a href="/frontpage">Forside</a>
+            <a href="/gyms">Center</a>
+            <a href="/courses">Hold</a>
+            <a href="/instructors">Instruktøre</a> 
+            <a href="/contactus">Kontakt os</a>
+              <div class="topnav-right">
+                <a href="/chooseSignup">Bliv medlem</a>
+                <a href="/chooseLogin">Log in</a>
+              </div>
+          </div>
+
+          <div class="header-before-container">
+            <br>
+            <br>
+          <h1 id="loggedIn-trainer">Velkommen</h1>
+          </div>
+
+          <div class="container-in-container">
+
+            <div class="column-in-container">
+
+              <h1>Dine klienter</h1>
+              <div class="trainer-customer-table">
+
+                I denne div skal der være data hentet vha AJAX til at vise kunder der har forløb hos træneren.
+
+              </div>
+          </div>
+          <div class="column-in-container">
+
+              <h1>Dine pakker</h1>
+              <div class="trainer-packages-table">
+                <table id="trainer-display-packages">
+                  <tr>
+                      <th>Name</th>
+                      <th>Price</th>
+
+                  </tr>
+              </table>
+
+                I denne div skal der være data hentet vha AJAX til at pakker som den personlige træner tilbyder.
+
+              </div>
+
+          </div>
+  
+
+
+          </div>
+
+          <div class="footer">
+            <div class="footer-centered">
+                <a href="/" class="active">Din Personlig Træner</a>
+          </div>
+          </div>
+
+
+
+
+
+
+
+    </>
+  </body>
+</html>

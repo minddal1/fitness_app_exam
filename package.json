@@ -1,0 +1,49 @@
+{
+  "name": "Fitness-System-Node-Exam",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start1": "node server",
+    "dev": "nodemon server",
+    "start": "budo index.js",
+    "createdb": "knex migrate:rollback && knex migrate:latest && knex seed:run",
+    "migrate:latest": "knex migrate:latest",
+    "migrate:make": "knex migrate:make",
+    "migrate:rollback": "knex migrate:rollback",
+    "seed:make": "knex seed:make",
+    "seed:run": "knex seed:run",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alper98/Fitness-System-Node-Exam.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alper98/Fitness-System-Node-Exam/issues"
+  },
+  "homepage": "https://github.com/alper98/Fitness-System-Node-Exam#readme",
+  "dependencies": {
+    "bcrypt": "^4.0.1",
+    "body-parser": "^1.19.0",
+    "budo": "^11.6.3",
+    "express": "^4.17.1",
+    "express-rate-limit": "^5.1.3",
+    "express-session": "^1.17.1",
+    "express-validator": "^6.5.0",
+    "helmet": "^3.22.1",
+    "http": "0.0.1-security",
+    "knex": "^0.21.1",
+    "moment": "^2.26.0",
+    "mysql": "^2.18.1",
+    "node-pre-gyp": "^0.15.0",
+    "nodemon": "^2.0.4",
+    "objection": "^2.1.3",
+    "path": "^0.12.7",
+    "socket.io": "^2.3.0"
+  },
+  "devDependencies": {},
+  "description": ""
+}
